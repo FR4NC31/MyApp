@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, Pressable } from 'react-native'
+import React from 'react'
+import './global.css'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const [buttonText, setButtonText] = React.useState('Press Me')
+
+  const toogleText = () => {
+    setButtonText(prev => prev === 'Press Me' ? 'Pressed!' : 'Press Me')
+  }
+  return (
+    <View className='flex-1 items-center justify-center bg-blue-200'>
+      <Text className='text-2xl text-white mb-4'>App</Text>
+      <Pressable onPress={toogleText} className='bg-white px-4 py-2 rounded'>
+        <Text>{buttonText}</Text>
+      </Pressable>
+    </View>
+  )
+}
